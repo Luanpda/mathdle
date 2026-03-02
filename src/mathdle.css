@@ -1,0 +1,213 @@
+/* Mathdle.css */
+
+.mathdle-container {
+  background-color: #1a1a1b; /* Fundo escuro */
+  color: #ffffff;
+  min-height: 100vh; /* Ocupa 100% da altura da tela */
+  display: flex;
+  
+  flex-direction: column;
+  align-items: center; /* Centraliza na horizontal */
+  justify-content: center; /* Adicionado: Centraliza na vertical */
+  font-family: 'Arial', sans-serif;
+  
+}
+
+/* --- O resto do código continua igual --- */
+
+/* Cabeçalho */
+.title-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mathdle-title {
+  font-size: 3.5rem;
+  color: #38bdf8; /* Cor azul claro/ciano do título */
+  margin: 0;
+  font-weight: 400;
+}
+
+.beta-tag {
+  font-size: 1rem;
+  color: #888;
+  vertical-align: super;
+  margin-left: 5px;
+}
+
+.day-text {
+  color: #cccccc;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+/* Botões de Dificuldade */
+.difficulty-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.diff-btn {
+  background-color: transparent;
+  color: #ccc;
+  border: 1px solid #444;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.diff-btn.active {
+  background-color: #0f4c81; /* Azul do botão Easy */
+  color: white;
+  border-color: #0f4c81;
+}
+
+/* Caixas de Entrada (Grid do Jogo) */
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.input-box {
+  width: 50px;
+  height: 50px;
+
+  border: 1px solid #444;
+  background-color: #1a1a1b;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+
+  /* 🔥 Transição suave */
+  transition: 
+    border 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.15s ease,
+    background-color 0.25s ease;
+}
+
+
+
+
+
+
+/* Input de Teclado Físico */
+.keyboard-hint {
+  background-color: #333;
+  color: #888;
+  border: none;
+  padding: 12px 20px;
+  width: 340px; /* Ajustado para alinhar com o teclado */
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Teclado Virtual (Grid) */
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.key-btn {
+  background-color: #1a1a1b;
+  color: white;
+  border: 1px solid #444;
+  width: 60px;
+  height: 50px;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.key-btn:hover {
+  background-color: #2a2a2b;
+}
+
+/* Botões de Ação (Submit, Clear, Rules) */
+.action-row {
+  display: flex;
+  gap: 15px;
+}
+
+.action-btn {
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-submit {
+  background-color: #117a65; /* Verde */
+}
+
+.btn-clear {
+  background-color: #7b241c; /* Vermelho escuro */
+}
+
+.btn-rules {
+  background-color: #512e5f; /* Roxo */
+}
+
+
+
+.input-box.focus {
+  border: 1px solid #38bdf8;
+  background-color: #111827;
+
+  box-shadow: 
+    0 0 12px rgba(56, 189, 248, 0.6),
+    0 0 24px rgba(56, 189, 248, 0.3);
+
+  transform: scale(1.15);
+  z-index: 2;
+}
+
+
+.input-box.verde {
+  border: 2px solid #22c55e;
+  background-color: #14532d;
+
+  box-shadow: 
+    0 0 12px rgba(34, 197, 94, 0.6),
+    0 0 24px rgba(34, 197, 94, 0.3);
+
+  transform: translateY(-2px);
+}
+
+/* 🟡 Posição errada */
+.input-box.amarelo {
+  border: 2px solid #facc15;
+  background-color: #fef08a;
+
+  box-shadow: 
+    0 0 12px rgba(234, 179, 8, 0.6),
+    0 0 24px rgba(234, 179, 8, 0.3);
+
+  transform: translateY(-2px);
+}
+
+.input-box.verde.focus,
+.input-box.amarelo.focus {
+  transform: scale(1.15);
+  z-index: 2;
+}
