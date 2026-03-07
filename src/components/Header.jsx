@@ -6,7 +6,7 @@ export default function Header() {
       <h1 className="mathdle-title">
         Mathdle <span className="beta-tag">Beta</span>
       </h1>
-      <p className="day-text">Day 1497</p>
+      <p className="day-text">Day 1</p>
     </div>
   );
 }

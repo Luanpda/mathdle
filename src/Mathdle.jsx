@@ -1,5 +1,5 @@
 
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './mathdle.css';
 import Header from './components/Header';
 import Difficulty from './components/Difficulty';
@@ -22,25 +22,61 @@ export default function Mathdle() {
   //equacao sorteada e resposta do jogo
   const [equacaoResposta, setEquacaoResposta] = useState(null);
 
-  //guarda a resposta verificada, com informacoes das cores e do status 
-  const [respostaVerificada, setRespostaVerificada] = useState(null);
+  //linha atual do jogo, representando as tentativas
+  const [linhaAtual, setLinhaAtual] = useState(0);
+
+  //guarda os valores, cores e em qual tentativa  das jogadas passadas
+  const [jogadasPassadas, setJogadasPassadas] = useState([]);
+
+  const [jogoFinalizado, setJogoFinalizado] = useState(false);
 
   const validarJogada = () => {
-    
+
     const resultado = verificarResposta(valorCaixa, equacaoResposta);
     console.log("Resultado da verificação:", resultado);
-    
-    setRespostaVerificada(resultado);
+
+    setValorCaixa(Array(equacaoResposta.length).fill(''));
+    setCaixaAtiva(0)
+    setJogadasPassadas([...jogadasPassadas, { valor: valorCaixa, cores: resultado.posicoesCorretas }]);
+    if (resultado.status === 'correta') {
+      setJogoFinalizado(true);
+    }
+    setLinhaAtual(linhaAtual + 1);
   };
 
+  const vefiricarArray = (array) => {
 
+
+    if (array.includes('')) return false;
+    const qtdIguais = array.filter(item => item === '=').length;
+    if(qtdIguais !== 1){
+      return false;
+    }
+
+    const primeiraParte = array.slice(0, array.indexOf('=')).join('');
+    const segundaParte = array.slice(array.indexOf('=') + 1).join('');
+
+    try {
+      
+      if (eval(primeiraParte) === eval(segundaParte)) {
+        return true; 
+      } else {
+        return false; 
+      }
+    } catch (erro) {
+      
+      return false; 
+    }
+
+
+  }
 
 
 
   useEffect(() => {
-  
-    fetch('http://localhost:3000/equacoes')
-      .then(resposta => resposta.json()) 
+
+    fetch('https://servermathdle.onrender.com/equacoes')
+      .then(resposta => resposta.json())
       .then(dadosRecebidos => {
         setDadosDoBanco(dadosRecebidos);
         const equacaoSorteada = dadosRecebidos[Math.floor(Math.random() * dadosRecebidos.length)]?.equacao
@@ -52,18 +88,28 @@ export default function Mathdle() {
 
 
   }, []);
-  
-  
-  
+
+
+
 
 
   return (
     <div className="mathdle-container">
       <Header />
       <Difficulty />
-      <Board caixaAtiva={caixaAtiva} setCaixaAtiva={setCaixaAtiva} valorCaixa={valorCaixa} equacaoResposta={equacaoResposta} respostaVerificada={respostaVerificada} />
-      <Keyboard caixaAtiva={caixaAtiva}  valorCaixa={valorCaixa} setValorCaixa={setValorCaixa} setCaixaAtiva={setCaixaAtiva} validarJogada={validarJogada}/>
-      <Actions />
+      <Board caixaAtiva={caixaAtiva} setCaixaAtiva={setCaixaAtiva} valorCaixa={valorCaixa}
+        equacaoResposta={equacaoResposta} linhaAtual={linhaAtual} jogadasPassadas={jogadasPassadas}
+        jogoFinalizado={jogoFinalizado}
+
+      />
+
+      <Keyboard caixaAtiva={caixaAtiva} valorCaixa={valorCaixa} setValorCaixa={setValorCaixa}
+        setCaixaAtiva={setCaixaAtiva} validarJogada={validarJogada} equacaoResposta={equacaoResposta}
+        linhaAtual={linhaAtual} jogoFinalizado={jogoFinalizado} vefiricarArray={vefiricarArray} />
+
+      <Actions validarJogada={validarJogada} setValorCaixa={setValorCaixa}
+        linhaAtual={linhaAtual} jogoFinalizado={jogoFinalizado} vefiricarArray={vefiricarArray}
+        valorCaixa={valorCaixa} />
     </div>
   );
 }
