@@ -80,7 +80,7 @@ export default function Mathdle() {
       .then(dadosRecebidos => {
         setDadosDoBanco(dadosRecebidos);
         const equacaoSorteada = dadosRecebidos[Math.floor(Math.random() * dadosRecebidos.length)]?.equacao
-        console.log(equacaoSorteada);
+        
         setEquacaoResposta(equacaoSorteada);
         setValorCaixa(Array(equacaoSorteada.length).fill(''));
       })
