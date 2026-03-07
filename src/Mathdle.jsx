@@ -47,10 +47,10 @@ export default function Mathdle() {
   const vefiricarArray = (array) => {
 
 
-    if (array.includes('')) return false;
+    if (array.includes('')) return true;
     const qtdIguais = array.filter(item => item === '=').length;
     if(qtdIguais !== 1){
-      return false;
+      return true;
     }
 
     const primeiraParte = array.slice(0, array.indexOf('=')).join('');
@@ -59,13 +59,13 @@ export default function Mathdle() {
     try {
       
       if (eval(primeiraParte) === eval(segundaParte)) {
-        return true; 
-      } else {
         return false; 
+      } else {
+        return true; 
       }
     } catch (erro) {
       
-      return false; 
+      return true; 
     }
 
 
