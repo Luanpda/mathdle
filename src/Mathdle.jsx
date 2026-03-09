@@ -46,6 +46,8 @@ export default function Mathdle() {
 
   const vefiricarArray = (array) => {
 
+    
+
 
     if (array.includes('')) return true;
     const qtdIguais = array.filter(item => item === '=').length;
@@ -53,12 +55,15 @@ export default function Mathdle() {
       return true;
     }
 
-    const primeiraParte = array.slice(0, array.indexOf('=')).join('');
-    const segundaParte = array.slice(array.indexOf('=') + 1).join('');
-
+    const equacao = array.join('');
+    if(equacao.startsWith('=') || equacao.endsWith('=')) return true;
+    const [primeiraParte, segundaParte] = equacao.split('=');
+    
+    const primeiraParteLimpa = primeiraParte.replace(/\b0+(?=\d)/g, '');
+    const segundaParteLimpa = segundaParte.replace(/\b0+(?=\d)/g, '');
     try {
       
-      if (eval(primeiraParte) === eval(segundaParte)) {
+      if (eval(primeiraParteLimpa) === eval(segundaParteLimpa)) {
         return false; 
       } else {
         return true; 
