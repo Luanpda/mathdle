@@ -1,16 +1,17 @@
-# React + Vite
+# Mathdle Project Documentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Description
+Mathdle is an interactive mathematical puzzle game where players can test and enhance their math skills through various challenges. The game provides a fun and educational way to improve problem-solving abilities.
 
-Currently, two official plugins are available:
+## Features
+- **Engaging Gameplay**: Offers various levels of difficulty to challenge players.
+- **Leaderboard**: Compete with friends and players worldwide.
+- **Hints and Solutions**: Provides clues to help players complete puzzles.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
+- **Frontend**: Built with React.js for a dynamic user experience.
+- **Backend**: Node.js and Express for handling server operations.
+- **Database**: MongoDB for storing user progress and puzzles.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Try the game  here: 
+https://mathdle-luan.vercel.app
