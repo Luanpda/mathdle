@@ -14,6 +14,7 @@ export default function RulesModal({ isOpen, onClose }) {
           <li>Você deve usar exatamente um sinal de igual (=).</li>
           <li>A conta deve estar matematicamente correta.</li>
           <li>Você tem 6 tentativas para poder acertar.</li>
+          <li>O servidor demora de 30-40 segundos  para iniciar.</li>
         </ul>
 
         <div className="rules-examples">
