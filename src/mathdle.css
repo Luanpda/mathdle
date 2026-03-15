@@ -1,21 +1,21 @@
-/* Mathdle.css */
+
 
 .mathdle-container {
-  background-color: #1a1a1b; /* Fundo escuro */
+  background-color: #1a1a1b; 
   color: #ffffff;
-  min-height: 100vh; /* Ocupa 100% da altura da tela */
+  min-height: 100vh; 
   display: flex;
   
   flex-direction: column;
-  align-items: center; /* Centraliza na horizontal */
-  justify-content: center; /* Adicionado: Centraliza na vertical */
+  align-items: center; 
+  justify-content: center; 
   font-family: 'Arial', sans-serif;
   
 }
 
-/* --- O resto do código continua igual --- */
 
-/* Cabeçalho */
+ 
+
 .title-container {
   text-align: center;
   margin-bottom: 20px;
@@ -23,7 +23,7 @@
 
 .mathdle-title {
   font-size: 3.5rem;
-  color: #38bdf8; /* Cor azul claro/ciano do título */
+  color: #38bdf8; 
   margin: 0;
   font-weight: 400;
 }
@@ -41,7 +41,7 @@
   margin-top: 10px;
 }
 
-/* Botões de Dificuldade */
+
 .difficulty-row {
   display: flex;
   gap: 10px;
@@ -59,12 +59,12 @@
 }
 
 .diff-btn.active {
-  background-color: #0f4c81; /* Azul do botão Easy */
+  background-color: #0f4c81; 
   color: white;
   border-color: #0f4c81;
 }
 
-/* Caixas de Entrada (Grid do Jogo) */
+
 .input-row {
   display: flex;
   gap: 8px;
@@ -87,7 +87,7 @@
   font-weight: bold;
   color: white;
 
-  /* 🔥 Transição suave */
+ 
   transition: 
     border 0.25s ease,
     box-shadow 0.25s ease,
@@ -100,13 +100,13 @@
 
 
 
-/* Input de Teclado Físico */
+
 .keyboard-hint {
   background-color: #333;
   color: #888;
   border: none;
   padding: 12px 20px;
-  width: 340px; /* Ajustado para alinhar com o teclado */
+  width: 340px; 
   box-sizing: border-box;
   border-radius: 4px;
   margin-bottom: 30px;
@@ -114,7 +114,7 @@
   text-align: center;
 }
 
-/* Teclado Virtual (Grid) */
+
 .keypad-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -141,7 +141,7 @@
   background-color: #2a2a2b;
 }
 
-/* Botões de Ação (Submit, Clear, Rules) */
+
 .action-row {
   display: flex;
   gap: 15px;
@@ -157,15 +157,15 @@
 }
 
 .btn-submit {
-  background-color: #117a65; /* Verde */
+  background-color: #117a65; 
 }
 
 .btn-clear {
-  background-color: #7b241c; /* Vermelho escuro */
+  background-color: #7b241c; 
 }
 
 .btn-rules {
-  background-color: #512e5f; /* Roxo */
+  background-color: #512e5f; 
 }
 
 
@@ -183,7 +183,7 @@
 }
 
 
-.input-box.verde {
+.verde {
   border: 2px solid #22c55e;
   background-color: #14532d;
 
@@ -194,8 +194,8 @@
   transform: translateY(-2px);
 }
 
-/* 🟡 Posição errada */
-.input-box.amarelo {
+
+.amarelo {
   border: 2px solid #facc15;
   background-color: #fef08a;
 
@@ -205,10 +205,99 @@
 
   transform: translateY(-2px);
 }
+.preto{
+  
+  background-color: #000000;
+  
+ 
+  box-shadow: 
+    0 0 12px rgba(26, 25, 24, 0.6),
+    0 0 24px rgba(26, 25, 24, 0.3);
+  transform: translateY(-2px);
+}
 
-.input-box.verde.focus,
-.input-box.amarelo.focus {
+.verde.focus,
+.amarelo.focus {
   transform: scale(1.15);
   z-index: 2;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+}
+
+
+.modal-content {
+  background-color: #ffffff; 
+  color: #121213;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 350px;
+  width: 90%;
+  animation: popIn 0.3s ease-out; 
+}
+
+.close-modal-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #538d4e; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-modal-btn:hover {
+  background-color: #43703e;
+}
+
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+.rules-content {
+  text-align: left;
+  max-width: 450px; 
+}
+
+.rules-content h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.rules-list {
+  padding-left: 20px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.rules-examples {
+  margin-top: 20px;
+  border-top: 1px solid #d3d6da;
+  padding-top: 15px;
+}
+
+
+.example-row {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 5px;
+  margin-top: 15px;
 }
 

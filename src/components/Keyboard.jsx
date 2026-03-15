@@ -1,11 +1,14 @@
 import React from 'react';
 import { useEffect } from 'react';
-export default function Keyboard({ caixaAtiva,valorCaixa,setValorCaixa,setCaixaAtiva, validarJogada, equacaoResposta, linhaAtual, jogoFinalizado, vefiricarArray}) {
+export default function Keyboard({ caixaAtiva,valorCaixa,setValorCaixa,setCaixaAtiva, validarJogada, equacaoResposta,keyboardCores, linhaAtual, jogoFinalizado, vefiricarArray}) {
   const keypadButtons = [
     '1', '2', '3', '4', '5',
     '0', '6', '7', '8', '9',
     '+', '-', '*', '/', '='
   ];
+
+  
+
 
   const handleKeyPress = (teclaClicada) => {
     if(jogoFinalizado){
@@ -118,7 +121,7 @@ export default function Keyboard({ caixaAtiva,valorCaixa,setValorCaixa,setCaixaA
       
       <div className="keypad-grid">
         {keypadButtons.map((btn, index) => (
-          <button key={index} className="key-btn" onClick={() => handleKeyPress(btn)}>
+          <button key={index} className={`key-btn  ${keyboardCores[btn]}`}  onClick={() => handleKeyPress(btn)}>
             {btn}
           </button>
         ))}
