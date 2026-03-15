@@ -13,6 +13,7 @@ export default function RulesModal({ isOpen, onClose }) {
           <li>Cada tentativa deve ser uma equação matemática válida (ex: 10+20=30).</li>
           <li>Você deve usar exatamente um sinal de igual (=).</li>
           <li>A conta deve estar matematicamente correta.</li>
+          <li>Você tem 6 tentativas para poder acertar.</li>
         </ul>
 
         <div className="rules-examples">
