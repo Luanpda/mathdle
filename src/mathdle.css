@@ -196,12 +196,13 @@
 
 
 .amarelo {
-  border: 2px solid #facc15;
-  background-color: #fef08a;
+  border: 2px solid #eab308; /* um pouco mais forte */
+
+  background-color: #fde047; /* amarelo mais escuro e confortável */
 
   box-shadow: 
-    0 0 12px rgba(234, 179, 8, 0.6),
-    0 0 24px rgba(234, 179, 8, 0.3);
+    0 0 8px rgba(234, 179, 8, 0.4),
+    0 0 16px rgba(234, 179, 8, 0.2);
 
   transform: translateY(-2px);
 }
