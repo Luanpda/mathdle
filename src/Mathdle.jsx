@@ -116,18 +116,78 @@ export default function Mathdle() {
         const equacaoMediaDoDia = medio[diasPassados % medio.length];
         const equacaoDificilDoDia = dificil[diasPassados % dificil.length];
 
-
         setdiasDeJogo(diasPassados);
-        setEquacoesDoDia([equacaoFacilDoDia, equacaoMediaDoDia, equacaoDificilDoDia]);
-        setEquacaoResposta(equacaoFacilDoDia.equacao);
-        setValorCaixa(Array(equacaoFacilDoDia.equacao.length).fill(''));
+        
+        const equacoesDeHoje = [equacaoFacilDoDia, equacaoMediaDoDia, equacaoDificilDoDia];
+        setEquacoesDoDia(equacoesDeHoje);
 
+        
+        const saveString = localStorage.getItem('mathdle_save');
+        let saveCarregado = null;
 
+        if (saveString) {
+          const saveParseado = JSON.parse(saveString);
+         
+          if (saveParseado.diaSalvo === diasPassados) {
+            saveCarregado = saveParseado;
+          }
+        }
+
+        if (saveCarregado) {
+          
+          setDificuldadeAtual(saveCarregado.dificuldadeAtual);
+          setProgressoSalvo(saveCarregado.progressoSalvo);
+          setValorCaixa(saveCarregado.telaAtiva.valorCaixa);
+          setJogadasPassadas(saveCarregado.telaAtiva.jogadasPassadas);
+          setLinhaAtual(saveCarregado.telaAtiva.linhaAtual);
+          setCaixaAtiva(saveCarregado.telaAtiva.caixaAtiva);
+          setJogoFinalizado(saveCarregado.telaAtiva.jogoFinalizado);
+          setKeyboardCores(saveCarregado.telaAtiva.keyboardCores);
+          
+          
+          const mapaIndex = { "facil": 0, "medio": 1, "dificil": 2 };
+          setEquacaoResposta(equacoesDeHoje[mapaIndex[saveCarregado.dificuldadeAtual]].equacao);
+          
+        } else {
+          
+          setEquacaoResposta(equacaoFacilDoDia.equacao);
+          setValorCaixa(Array(equacaoFacilDoDia.equacao.length).fill(''));
+        }
       })
       .catch(erro => console.log("Deu ruim na busca:", erro));
 
 
   }, []);
+
+
+  useEffect(() => {
+  
+    if (!equacaoResposta) return; 
+
+    const pacoteDeSave = {
+      diaSalvo: diasPassados,
+      dificuldadeAtual: dificuldadeAtual,
+      progressoSalvo: progressoSalvo,
+     
+      telaAtiva: { 
+        valorCaixa, 
+        jogadasPassadas, 
+        linhaAtual, 
+        caixaAtiva, 
+        jogoFinalizado, 
+        keyboardCores 
+      }
+    };
+
+    localStorage.setItem('mathdle_save', JSON.stringify(pacoteDeSave));
+  }, [diasPassados, dificuldadeAtual, progressoSalvo, valorCaixa, jogadasPassadas, linhaAtual, caixaAtiva, jogoFinalizado, keyboardCores, equacaoResposta]);
+
+
+
+
+
+
+
 
   const trocarDificuldade = (novaDificuldade) => {
 
