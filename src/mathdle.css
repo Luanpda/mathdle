@@ -196,12 +196,15 @@
 
 
 .amarelo {
-  border: 2px solid #facc15;
-  background-color: #fef08a;
+  border: 2px solid #facc15; /* amarelo bonito (destaque) */
+
+  background-color: #756033; /* amarelo puxado pro laranja */
+
+  color: #ffffff; /* número branco */
 
   box-shadow: 
-    0 0 12px rgba(234, 179, 8, 0.6),
-    0 0 24px rgba(234, 179, 8, 0.3);
+    0 0 8px rgba(245, 158, 11, 0.4),
+    0 0 16px rgba(245, 158, 11, 0.2);
 
   transform: translateY(-2px);
 }
